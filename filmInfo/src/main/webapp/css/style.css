@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+
+#container {
+  	display: flex;
+}
+
+#inputs {
+  	flex: 0 0 33%;
+  	height: 90vh;
+  	float: left;
+}
+
+#output {
+	flex: 1;
+	height: 90vh;
+  	background-color: powderblue;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+    href="./css/style.css"
+    type="text/css"/>
+<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
+<title>Title</title>
+</head>
+<body>
+	
+	<div id=container>
+		<div id=inputs> 
+		<!--form is stored in table so everything lines up-->
+		<table style="width:100%">
+			<tr>
+			    <!--dropdown list as there are only limited options for the method-->
+				<td><label for="method">Method:</label></td>
+				<td><select id="method">
+    				<option value="GetAllFilms">GetAllFilms</option>
+    				<option value="GetFilm">GetFilm</option>
+    				<option value="InsertFilm">InsertFilm</option>
+    				<option value="UpdateFilm">UpdateFilm</option>
+    				<option value="DeleteFilm">DeleteFilm</option>
+  				</select></td>
+  			</tr>
+  			<tr>
+  				<td><label for="format">Format:</label></td>
+				<td><select id="format">
+    				<option value="json">Json</option>
+    				<option value="xml">XML</option>
+    				<option value="plain">PlainText</option>
+  				</select></td>
+  			</tr>
+  			<tr>
+  				<td><label for="format">ID:</label></td>
+				<td><input type="number" id="id"></td>
+			</tr>
+			<tr>
+				<td><label for="title">Title:</label></td>
+				<td><input type="text" id="title"></td>
+			</tr>
+			<tr>
+				<td><label for="year">Year:</label></td>
+				<td><input type="number" id="year"></td>
+			</tr>
+			<tr>
+				<td><label for="director">Director:</label></td>
+				<td><input type="text" id="director"></td>
+			</tr>
+			<tr>
+				<td><label for="stars">Stars:</label></td>
+				<td><input type="text" id="stars"></td>
+			</tr>
+			<tr>
+				<td><label for="review">Review:</label></td>
+				<td><input type="text" id="review"></td>
+			</tr>
+			<tr>
+				<td><button id="submit">Submit</button></td>
+			</tr>
+		</table>
+		</div>
+		
+		<!--textarea output for scroll bar. set to read only so user cannot type in it-->
+		<textarea id="output" READONLY></textarea>
+
+	</div>
+	
+	
+	<script>
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			//get inputs from form
+			var method = $("#method").val();
+			var format = $("#format").val();
+			var id = $("#id").val();
+			var title = encodeURIComponent($("#title").val());
+			var year = $("#year").val();
+			var director = encodeURIComponent($("#director").val());
+			var stars = encodeURIComponent($("#stars").val());
+			var review = encodeURIComponent($("#review").val());
+			
+			//load the contents of the constructed url into the textarea #output
+			$("#output").load("https://handy-tiger-298217.appspot.com/"+method+
+							  "?format="+format+"&id="+id+"&title="+title+"&year="
+							  +year+"&director="+director+"&stars="+stars+"&review="+review);
+		});
+	});
+	</script>
+
+	
+
+
+</body>
+</html>
